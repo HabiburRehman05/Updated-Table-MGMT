@@ -39,6 +39,8 @@ public class TableController {
 	@PostMapping("/add-column")
     public ResponseEntity<String> addColumn(@RequestBody ColumnDetails request) {
         try {
+        	
+        	System.out.println(request);
             tsi.addColumn(request.getTableName(), request.getColumnName(), request.getDataType());
             return ResponseEntity.ok("Column added successfully");
         } catch (Exception e) {

@@ -54,9 +54,10 @@ public class TableServiceImplementation {
 	        int newVersion = currentVersion + 1;
 
 	            String columnChange = "Column added: " + columnName + " (Type: " + dataType + ")";
-	            String historySql = "INSERT INTO change_history (table_name, column_change, version, timestamp) " +
-	                    "VALUES (?, ?, ?, ?)";
-	            jdbcTemplate.update(historySql, tableName, columnChange, newVersion, LocalDateTime.now());
+	            String historySql = "INSERT INTO change_history (table_name, column_change, created_by, version, timestamp) " +
+	                    "VALUES (?, ?, ?, ?, ?)";
+	            String createdBy = "Tenant User";
+				jdbcTemplate.update(historySql, tableName, columnChange, createdBy, newVersion, LocalDateTime.now());
 	     
 	     
 	 }
